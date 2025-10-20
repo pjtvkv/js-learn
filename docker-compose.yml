@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    tty: true
+    stdin_open: true
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/workspace
+    ports:
+      - "3000:3000"  # common React/Next.js default
+      - "5173:5173"  # common Vite default
+    command: ["sleep", "infinity"]
